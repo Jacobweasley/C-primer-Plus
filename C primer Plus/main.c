@@ -7,8 +7,16 @@
 
 #include <stdio.h>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+int main(void)
+{
+    int num;
+    num = 1;
+    
+    printf("I am a simple ");
+    printf("computer.\n");
+    printf("My favorite number is %d because it is first. \n", num);
+    
+    getchar();
     return 0;
 }
+
