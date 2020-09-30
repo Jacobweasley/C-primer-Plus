@@ -6,18 +6,17 @@
 //
 
 #include <stdio.h>
-void butler(void);
 
 int main(void)
 {
-    printf("I will summon the butler function.\n");
-    butler();
-    printf("Yes. Bring me some tea and writeable DVDs.\n");
+    int n, n2, n3;
+    
+    n = 5;
+    n2 = n * n;
+    n3 = n2 * n2;
+    printf("n = %d, n squared = %d, n cubed = %d\n", n, n2, n3);
     
     return 0;
+    
+    
 }
-void butler(void)
-{
-    printf("You rang, sir?\n");
-}
-
