@@ -6,15 +6,18 @@
 //
 
 #include <stdio.h>
+void butler(void);
 
 int main(void)
 {
-    int feet, fathoms;
-    fathoms = 2;
-    feet = 6 * fathoms;
-    printf("There are %d feet in %d fathoms ! \n", feet, fathoms);
-    printf("Yes, I said %d feet!\n", 6 * fathoms);
+    printf("I will summon the butler function.\n");
+    butler();
+    printf("Yes. Bring me some tea and writeable DVDs.\n");
     
     return 0;
+}
+void butler(void)
+{
+    printf("You rang, sir?\n");
 }
 
