@@ -6,26 +6,19 @@
 //
 
 #include <stdio.h>
-#include <string.h>
 
-#define DENSITY 62.4
-int main()
+#define ADJUST 7.31
+
+int main(void)
 {
-    float weight, volume;
-    int size, letters;
-    char name[40];
+    const double SCALE = 0.333;
+    double shoe, foot;
     
-    printf("Hi! What's your first name?\n");
-    scanf("%s", name);//在scanf 输入字符串时并不用使用 & 取址操作符
-    printf("%s, what's your weight in pounds?\n", name);
-    scanf("%f", &weight);
-    size = sizeof(name);
-    letters = strlen(name);//使用 strlen()来获取字符串的长度
-    volume = weight / DENSITY;
-    printf("Well, %s, your volume is %2.2f cunbic feet. \n", name , volume);
-    printf("Also, your first name has %d letters, \n", letters);
-    printf("and we have %d bytes to store it. \n", size);
-    
+    shoe = 9.0;
+    foot = SCALE * shoe + ADJUST;
+    printf("Shoe size (men's)  foot length\n");
+    printf("%10.1f %15.2f inches\n", shoe, foot);
+    //在 %f 中的 f 前添加 0.2 表示精确到小数点的后两位,而如果在 f 前添加大于1 的数的话就表示在前面预留多少个字符位置
     return 0;
-    
 }
+
