@@ -6,19 +6,26 @@
 //
 
 #include <stdio.h>
-
-#define ADJUST 7.31
-
+#define ADJUST 7.3
 int main(void)
 {
     const double SCALE = 0.333;
     double shoe, foot;
     
-    shoe = 9.0;
-    foot = SCALE * shoe + ADJUST;
-    printf("Shoe size (men's)  foot length\n");
-    printf("%10.1f %15.2f inches\n", shoe, foot);
-    //在 %f 中的 f 前添加 0.2 表示精确到小数点的后两位,而如果在 f 前添加大于1 的数的话就表示在前面预留多少个字符位置
+    printf("Shoe size (men's)   foot length\n");
+    shoe = 3.0;
+    while (shoe < 18.5) {
+        foot = SCALE * shoe + ADJUST;
+        printf("%10.1f %15.2f inches\n", shoe, foot);
+        shoe = shoe + 1.0;
+    }
+    //这里使用了 while 循环,即在变量 shoe 没有大于 18.5的情况下持续运行该循环
+    //在该循环中,先是算出该鞋码对应的大小的脚的尺寸.
+    //每次村还都是将对应的鞋码与脚的大小,打印出来.
+    //在每次循环中,shoe 变量自加 1 .
+    printf("If the shoe fits, wear it. \n");
+    
     return 0;
 }
+
 
