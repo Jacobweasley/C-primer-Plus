@@ -8,11 +8,19 @@
 
 int main(void)
 {
-    int true_val, false_val;
+    int n = 3;
     
-    true_val = (10 > 2);
-    false_val = (10 == 2);
-    printf("true = %d; false = %d \n", true_val, false_val);
+    while (n)
+    {
+        printf("%2d is true\n", n--);
+    }
+    printf("%2d is false\n", n);
+    
+    n = -3;
+    while (n)
+        printf("%2d is true\n", n++);
+    printf("%2d is false\n", n);
     
     return 0;
+    
 }
