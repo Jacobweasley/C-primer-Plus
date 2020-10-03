@@ -5,23 +5,14 @@
 //  Created by 大娘 on 2020/9/30.
 //
 #include <stdio.h>
-#include <math.h>
 
 int main(void)
 {
-    const double ANSWER = 3.14159;
-    double response;
+    int true_val, false_val;
     
-    printf("What is the value of pi?\n");
-    scanf("%lf", &response);
-    while (fabs(response - ANSWER) > 0.0001)
-    {
-        printf("Try again!\n");
-        scanf("%lf", &response);
-        
-    }
+    true_val = (10 > 2);
+    false_val = (10 == 2);
+    printf("true = %d; false = %d \n", true_val, false_val);
     
-    printf("Close enough!\n");
     return 0;
-    }
-
+}
