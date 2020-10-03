@@ -7,24 +7,18 @@
 #include <stdio.h>
 int main(void)
 {
-    long num;
-    long sum = 0L;
-    int status;
+    int n = 5;
     
-    printf("Please enter an integer to be summed ");
-    printf("(q to quit): ");
-    status = scanf("%ld", &num);
-    while (status == 1)
+    while (n < 7)
     {
-        sum = sum + num;
-        printf("Please enter next integer (q to quit): ");
-        status = scanf("%ld", &num);//在该表达式中, scanf 语句使有返回值的,也就是说,要是 scanf 函数正确的接收了一个整形,则会正确赋值给 num 并且  return 0.以使 该 while 循环继续
-        
+        printf("n = %d\n", n);
+        n++;
+        printf("Now n = %d\n", n);
         
     }
-    printf("Those integers sum to %ld.\n", sum);
+    
+    printf("The loop has finished.\n");
     
     return 0;
+    
 }
-
-
