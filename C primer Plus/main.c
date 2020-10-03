@@ -8,19 +8,21 @@
 
 int main(void)
 {
-    int n = 3;
+    long num;
+    long sum = 0L;
+    int status;
     
-    while (n)
-    {
-        printf("%2d is true\n", n--);
+    printf("Please enter an integer to be summed ");
+    printf("(q to quit): ");
+    status = scanf("%ld", &num);
+    while (status == 1) {
+        sum = sum + sum;
+        printf("Please enter next integer (q to quit): ");
+        status = scanf("%ld", &num);
+        
     }
-    printf("%2d is false\n", n);
     
-    n = -3;
-    while (n)
-        printf("%2d is true\n", n++);
-    printf("%2d is false\n", n);
+    printf("Those integers sum to %ld.\n", sum);
     
     return 0;
-    
 }
