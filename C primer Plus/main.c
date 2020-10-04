@@ -8,12 +8,13 @@
 
 int main(void)
 {
-    int num = 0;
+    const int FIRST_OZ = 46;
+    const int NEXT_OZ = 20;
+    int ounces, cost;
     
-    for (printf("Keep entering numbers!\n"); num != 6; )
-    scanf("%d", &num);
-    printf("That's the one I want!\n");
-    
+    printf("ounces cost\n");
+    for (ounces = 1, cost = FIRST_OZ; ounces <= 16; ounces++, cost += NEXT_OZ)
+    printf("%5d  $%4.2f\n", ounces, cost /100.0);
     
     return 0;
 }
