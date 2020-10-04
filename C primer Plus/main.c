@@ -8,20 +8,11 @@
 
 int main(void)
 {
-    long num;
-    long sum = 0L;
-    _Bool input_is_good;
+    int num = 0;
     
-    printf("Please enter an integer to be summed ");
-    printf("(q to quit: ) ");
-    
-    input_is_good = (scanf("%ld", &num) == 1);
-    while (input_is_good) {
-        sum = sum + num;
-        printf("Please enter next integer (q tu quit: )");
-        input_is_good = (scanf("%ld", &num) == 1);
-    }
-    printf("Those integers sum to %ld.\n", sum);
+    for (printf("Keep entering numbers!\n"); num != 6; )
+    scanf("%d", &num);
+    printf("That's the one I want!\n");
     
     
     return 0;
