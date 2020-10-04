@@ -5,34 +5,26 @@
 //  Created by 大娘 on 2020/9/30.
 //
 #include <stdio.h>
-double power(double n, int p );
 int main(void)
 {
-    double x, xpow;
-    int exp;
+    const int FREEZING = 0;
+    float temperatre;
+    int cold_days = 0;
+    int all_days = 0;
     
-    printf("Enter a number and the positive integer power");
-    printf(" to which\nthe number will be raised. Enter q");
-    printf(" to quit.\n");
-    while (scanf("%lf%d", &x, &exp) == 2)
+    printf("Enter the list of daily low temperatures.\n");
+    printf("Use Celsius, and enter q to quit.\n");
+    while (scanf("%f", &temperatre) == 1)
     {
-        xpow = power(x, exp);
-        printf("%.3g to the power %d is %.5g\n", x, exp, xpow);
-        printf("Enter next pair of numbers or q to quit.\n");
+        all_days++;
+        if (temperatre < FREEZING)
+            cold_days++;
     }
-    printf("Hope you enjoyed this power trip -- bye!\n");
+    if (all_days != 0)
+        printf("%d days total: %.1f%% were below freezing.\n", all_days, 100.0 * (float) cold_days / all_days);
+    if (all_days == 0)
+    {
+        printf("No data entered!\n");
+    }
     
-    return 0;
-}
-
-
-double power(double n, int p)
-{
-    double pow = 1;
-    int i;
-    
-    for (i = 1; i <= p; i++)
-    pow *= n;
-    
-    return pow;
 }
