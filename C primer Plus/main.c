@@ -5,30 +5,34 @@
 //  Created by 大娘 on 2020/9/30.
 //
 #include <stdio.h>
-#define SIZE 10
-#define PAR 72
+double power(double n, int p );
 int main(void)
 {
-    int index, score[SIZE];
-    int sum = 0;
-    float average;
+    double x, xpow;
+    int exp;
     
-    printf("Enter %d golf scores:\n", SIZE);
-    for (index = 0; index < SIZE ; index++ ) {
-        scanf("%d", &score[index]);
+    printf("Enter a number and the positive integer power");
+    printf(" to which\nthe number will be raised. Enter q");
+    printf(" to quit.\n");
+    while (scanf("%lf%d", &x, &exp) == 2)
+    {
+        xpow = power(x, exp);
+        printf("%.3g to the power %d is %.5g\n", x, exp, xpow);
+        printf("Enter next pair of numbers or q to quit.\n");
     }
-    printf("The scores read in are as follows:\n");
-    for (index = 0; index < SIZE; index++) {
-        printf("%5d", score[index]);
-    }
-    printf("\n");
-    for (index = 0; index < SIZE; index++) {
-        sum += score[index];
-    }
-    average = (float) sum / SIZE;
-    printf("Sum of scores = %d, average = %.2f\n", sum, average);
-    printf("That's a handicap of %.0f.\n", average - PAR);
+    printf("Hope you enjoyed this power trip -- bye!\n");
     
     return 0;
+}
+
+
+double power(double n, int p)
+{
+    double pow = 1;
+    int i;
     
+    for (i = 1; i <= p; i++)
+    pow *= n;
+    
+    return pow;
 }
