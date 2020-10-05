@@ -5,21 +5,21 @@
 //  Created by 大娘 on 2020/9/30.
 //
 #include <stdio.h>
-#define SPACE ' '
+#include <ctype.h>
+
 int main(void)
 {
     char ch;
     
-    ch = getchar();
-    while(ch != '\n')
+    while ((ch = getchar()) != '\n')
     {
-        if (ch == SPACE)
-            putchar(ch);
-        else
+        if (isalpha(ch))
             putchar(ch + 1);
-        ch = getchar();
+        else
+            putchar(ch);
     }
     putchar(ch);
     
     return 0;
 }
+
