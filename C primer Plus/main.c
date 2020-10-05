@@ -2,44 +2,22 @@
 //  main.c
 //  C primer Plus
 //
-//  Created by 大娘 on 2020/9/30.
-//
-#include <stdio.h>
-#include <ctype.h>
-#include <stdbool.h>
-#define STOP '|'
+//  Created by 大娘 on 2020/9/30
 
-int main(void){
-    char c;
-    char prev;
-    long n_chars = 0L;
-    int n_lines = 0;
-    int n_words = 0;
-    int p_lines = 0;
-    bool inword = false;
+#include <stdio.h>
+#define COVERAGE 350
+
+int main(void)
+{
+    int sq_feet;
+    int cans;
     
-    printf("Enter text to be analyzed (| to terminate):\n");
-    prev = '\n';
-    while ((c = getchar()) != STOP){
-        n_chars++;
-        if (c == '\n')
-            n_lines++;
-        if (!isspace(c) && !inword) {
-            inword = true;
-            n_words++;
-        }
-        if (isspace(c) && inword){
-            inword = false;
-        }
-        prev = 'c';
-            
+    printf("Enter number of square feet to be painted: \n");
+    while (scanf("%d", &sq_feet) == 1) {
+        cans = sq_feet / COVERAGE;
+        cans += ((sq_feet % COVERAGE == 0)) ? 0 : 1;
+        printf("You need %d %s of paint.\n", cans, cans == 1 ? "can" : "cans");
+        printf("Enter next value (q to quit): \n");
     }
-    
-    if (prev != '\n') {
-        p_lines = 1;
-    }
-    printf("characters = %ld, words = %d, lines = %d, ", n_chars, n_words, n_lines);
-    printf("partila lines = %d\n", p_lines);
-    
     return 0;
 }
