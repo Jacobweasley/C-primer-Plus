@@ -5,42 +5,32 @@
 //  Created by 大娘 on 2020/9/30
 
 #include <stdio.h>
+void display (char cr, int lines, int width);
 int main(void)
 {
-    char ch;
-    int a_ct, e_ct, i_ct, o_ct, u_ct;
-    
-    a_ct = e_ct = i_ct = o_ct = u_ct = 0;
-    
-    printf("Enter some text; enter # to quit.\n");
-    while ((ch = getchar()) != '#') {
-        switch (ch)
-        {
-            case 'a':
-            case 'A':
-                a_ct++;
-                break;
-            case 'e':
-            case 'E':
-                e_ct++;
-                break;
-            case 'i':
-            case 'I':
-                i_ct++;
-                break;
-            case 'o':
-            case 'O':
-                o_ct++;
-                break;
-            case 'u':
-            case 'U':
-                u_ct++;
-                break;
-            default: break;
-        }
+    int ch;
+    int rows, cols;
+    printf("Enter a character and two integers:\n");
+    while ((ch = getchar()) != '\n') {
+        scanf("%d %d", &rows, &cols);
+        display(ch, rows, cols);
+        printf("Enter another character and two integers;\n");
+        printf("Enter a newline to quit.\n");
+        
     }
-    printf("number of vowels: A E I O U \n");
-    printf("              %4d %4d %4d %4d %4d\n", a_ct, e_ct, i_ct, o_ct, u_ct);
-    return 0;
+    printf("Bye.\n");
     
+    return 0;
+}
+
+void display(char cr, int lines, int width)
+{
+    int row, col;
+    
+    for (row = 1; row <= lines; row++)
+    {
+        for (col = 1; col <= width; col++)
+        putchar(cr);
+        putchar('\n');
+    }
 }
