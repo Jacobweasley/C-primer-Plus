@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8821E2625304FC70054BA20 /* hotel.c in Sources */ = {isa = PBXBuildFile; fileRef = A8821E2525304FC70054BA20 /* hotel.c */; };
 		A8E539CF25247567006C5075 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A8E539CE25247567006C5075 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A8821E2425304FC70054BA20 /* hotel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hotel.h; sourceTree = "<group>"; };
+		A8821E2525304FC70054BA20 /* hotel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = hotel.c; sourceTree = "<group>"; };
 		A8E539CB25247567006C5075 /* C primer Plus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "C primer Plus"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E539CE25247567006C5075 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				A8E539CE25247567006C5075 /* main.c */,
+				A8821E2425304FC70054BA20 /* hotel.h */,
+				A8821E2525304FC70054BA20 /* hotel.c */,
 			);
 			path = "C primer Plus";
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8821E2625304FC70054BA20 /* hotel.c in Sources */,
 				A8E539CF25247567006C5075 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,40 +3,42 @@
 //  C primer Plus
 //
 //  Created by 大娘 on 2020/9/30
-
-
-
 #include <stdio.h>
-
-void to_bingary (unsigned long n);
+#include "hotel.h"
 
 int main(void)
 {
-    unsigned long number;
-    printf("Enter an integer (q to quit):\n");
-    while (scanf("%lu", &number) == 1) {
-        printf("Binary equivalent: ");
-        to_bingary(number);
-        putchar('\n');
-        printf("Enter an integer (q to quit): \n");
+    int nights;
+    double hotel_rate;
+    int code;
+    
+    while ((code = menu()) != QUIT) {
+        switch (code)
+        {
+            case 1:
+                hotel_rate = HOTEL1;
+                break;
+            case 2:
+                hotel_rate = HOTEL2;
+                break;
+            case 3:
+                hotel_rate = HOTEL3;
+                break;
+            case 4:
+                hotel_rate = HOTEL4;
+                break;
+            default:
+                hotel_rate = 0.0;
+                printf("Oops!\n");
+                break;
+        }
+        nights = getnights();
+        showprice(hotel_rate, nights);
         
     }
-    printf("Done.\n");
+    printf("Thank you and goodbye.\n");
     
     return 0;
 }
-
-void to_bingary(unsigned long n)
-{
-    int r;
-    
-    r = n % 2;
-    if (n >= 2)
-        to_bingary(n / 2);
-    putchar(r == 0 ? '0' : '1');
-    
-    return;
-}
-
 
 
