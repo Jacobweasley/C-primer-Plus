@@ -4,17 +4,19 @@
 //
 //  Created by 大娘 on 2020/9/30
 #include <stdio.h>
-int imax(int , int);
+void up_down(int);
 
 int main(void)
 {
-    printf("The maximum of %d and %d is %d.\n", 3, 5, imax(3, 5));
-    printf("The maximun of %d and %d is %d.\n", 3, 5, imax(3.0, 5.0));
+    up_down(1);
     return 0;
 }
 
-int imax(int n, int m)
+void up_down(int n)
 {
-    return (n > m ? n : m);
+    printf("Level %d: n location %p\n", n, &n);
+    if (n < 4) {
+        up_down(n + 1);
+    }
+    printf("LEVEL %d: n location %p\n", n, &n);
 }
-
