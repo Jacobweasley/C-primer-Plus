@@ -1,29 +1,16 @@
 #include <stdio.h>
-#define SIZE 10
-int sump(int * start, int * end);
-
+int data[2] = { 100, 200 };
+int moredata[2] = { 300, 400 };
 int main(void)
 {
-    int marbles[SIZE] = { 20, 10, 5, 39, 4, 16, 19, 26, 31, 20};
-    long answer;
-    
-    answer = sump(marbles, marbles + SIZE);
-    printf("The total number of marbles is %ld.\n", answer);
+    int * p1, * p2, * p3;
+	
+    p1 = p2 = data;
+    p3 = moredata;
+    printf(" *p1 = %d, *p2 = %d,      *p3 = %d\n", *p1, *p2, *p3);
+    printf("*p1++ = %d, *++p2 = %d, (*p3)++ = %d\n", *p1++, *++p2, (*p3)++);
+    printf("  *p1 = %d,   *p2 = %d,    *p3 = %d\n", *p1, *p2, *p3);
     
     return 0;
     
 }
-
-int sump(int * start, int * end)
-{
-    int total = 0;
-    
-    while (start < end )
-    {
-        total += *start;
-        start++;
-        //这里的 start++ 是表示指针++ 
-    }
-    return 0;
-}
-
