@@ -1,15 +1,13 @@
 #include <stdio.h>
 
-#define MONTHS 12
-
-int main(void)
-{
-    int days[MONTHS] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    int index;
+#define SIZE 4
+int main(void){
+    int no_date[SIZE];
+    int i;
     
-    for (index = 0; index < MONTHS; index++)
-    {
-        printf("Month %2d has %2d days.\n", index + 1, days[index]);
+    printf("%2s%14s\n",    "i", "no_date[i]");
+    for (i = 0; i < SIZE; i++) {
+        printf("%2d%14d\n", i, no_date[i]);
     }
     
     return 0;
