@@ -1,42 +1,22 @@
-//
-//  main.c
-//  C primer Plus
-//
-//  Created by 大娘 on 2020/9/30
-
-
-
 #include <stdio.h>
 
-void to_bingary (unsigned long n);
-
+void mikado(int);
 int main(void)
 {
-    unsigned long number;
-    printf("Enter an integer (q to quit):\n");
-    while (scanf("%lu", &number) == 1) {
-        printf("Binary equivalent: ");
-        to_bingary(number);
-        putchar('\n');
-        printf("Enter an integer (q to quit): \n");
-        
-    }
-    printf("Done.\n");
+    int pooh = 2, bah = 5;
+    
+    printf("In main(), pooh %d and &pooh = %p\n", pooh, &pooh);
+    printf("In main(), bah = %d and &bah = %p\n", bah, &bah);
+    mikado(pooh);
     
     return 0;
 }
 
-void to_bingary(unsigned long n)
+void mikado(int bah)
 {
-    int r;
+    int pooh = 10;
     
-    r = n % 2;
-    if (n >= 2)
-        to_bingary(n / 2);
-    putchar(r == 0 ? '0' : '1');
+    printf("In mikado(), pooh = %d and &pooh = %p\n", pooh, &pooh);
+    printf("In mikado(), bah = %d and &bah = %p\n", bah, &bah);
     
-    return;
 }
-
-
-
