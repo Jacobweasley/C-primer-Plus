@@ -1,24 +1,39 @@
 #include <stdio.h>
-#define SIZE 4
-int main(void){
-    int value1 = 44;
-    int arr[SIZE];
-    int value2 = 88;
-    int i;
+#define MONTHS 12
+#define YEARS 5
+int main(void)
+{
+    const float rain[YEARS][MONTHS] =
+    {
+        {2.3, 2.4, 2.4, 3.2, 2.2, 4.2, 2.3, 5.3, 2.1, 5.3, 2.3, 4.5},
+        {2.3, 2.4, 2.4, 3.2, 2.2, 4.2, 2.3, 5.3, 2.1, 5.3, 2.3, 4.5},
+        {2.3, 2.4, 2.4, 3.2, 2.2, 4.2, 2.3, 5.3, 2.1, 5.3, 2.3, 4.5},
+        {2.3, 2.4, 2.4, 3.2, 2.2, 4.2, 2.3, 5.3, 2.1, 5.3, 2.3, 4.5},
+        {2.3, 2.4, 2.4, 3.2, 2.2, 4.2, 2.3, 5.3, 2.1, 5.3, 2.3, 4.5}
+    };
+    int year, month;
+    float subtot, total;
     
-    printf("value1 = %d, value2 = %d\n", value1, value2);
-    for (i = -1; i <= SIZE; i++) {
-        arr[i] = 2 * i + 1;
+    printf(" YEAR    RAINFALL   (inches)\n");
+    for (year = 0, total = 0; year < YEARS; year++) {
+        for (month = 0, subtot = 0; month < MONTHS; month++)
+        subtot += rain[year][month];
+        printf("%5d %15f\n", 2010 + year, subtot);
+        total += subtot;
     }
-    for (i = -1; i < 7; i++) {
-        printf("%2d %d\n", i, arr[i]);
-    }
+    printf("\nThe yearly average is %.1f inches.\n\n", total / YEARS);
+    printf("MONTHLY AVERAGES: \n\n");
+    printf(" Jan Feb Mar Apr May Jun Jul Aug Sep Oct");
+    printf(" Nov Dec\n");
     
-    printf("value1 = %d, value2 = %d\n", value1, value2);
-    printf("address of arr[-1] : %p\n", &arr[-1]);
-    printf("address of arr[4] : %p\n", &arr[4]);
-    printf("address of value1 : %p\n", &value1);
-    printf("address of value2 : %p\n", &value2);
+    for (month = 0; month < MONTHS; month++)
+    {
+        for (year = 0, subtot = 0; year < YEARS; year++) {
+            subtot += rain[year][month];
+        }
+        printf("%4.lf ", subtot / YEARS);
+    }
+    printf("\n");
     
     return 0;
 }
