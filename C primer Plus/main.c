@@ -1,22 +1,25 @@
 #include <stdio.h>
 
-void mikado(int);
+void interchange(int u, int v);
+
 int main(void)
 {
-    int pooh = 2, bah = 5;
+    int x = 5, y = 10;
     
-    printf("In main(), pooh %d and &pooh = %p\n", pooh, &pooh);
-    printf("In main(), bah = %d and &bah = %p\n", bah, &bah);
-    mikado(pooh);
+    printf("Originally x = %d and y = %d.\n", x, y);
+    interchange(x, y);
+    printf("Now x = %d and y = %d.\n", x, y);
     
     return 0;
 }
 
-void mikado(int bah)
+
+void interchange(int u, int v)
 {
-    int pooh = 10;
-    
-    printf("In mikado(), pooh = %d and &pooh = %p\n", pooh, &pooh);
-    printf("In mikado(), bah = %d and &bah = %p\n", bah, &bah);
-    
+    int temp;
+    printf("Originally u = %d and v = %d.\n", u, v);
+    temp = u;
+    u = v;
+    v = temp;
+    printf("Now u = %d and v = %d.\n", u, v);
 }
