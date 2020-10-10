@@ -1,13 +1,11 @@
 #include <stdio.h>
-#define SIZE 4
 int main(void)
 {
-    int some_data[SIZE] = { 1492, 1066 };
-    int i;
+    const int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31};
+    int index;
     
-    printf("%2s%14s\n",   "i", "some_data[i]");
-    for (i = 0; i < SIZE; i++)
-    printf("%2d%14d\n", i, some_data[i]);
-    
+    for (index = 0; index < (sizeof days / sizeof days[0]); index++){
+    	printf("Month %2d has %d days.\n", index + 1, days[index]);
+    }
     return 0;
 }
