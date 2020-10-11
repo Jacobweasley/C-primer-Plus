@@ -1,53 +1,49 @@
 #include <stdio.h>
-#define ROWS 3
 #define COLS 4
-int sum2d(int rows, int cols, int ar[rows][cols]);
+int sum2d(const int ar[][COLS], int rows);
+int sum(const int ar[], int n);
 int main(void)
 {
-    int i, j;
-    int rs = 3;
-    int cs = 10;
-    int junk[ROWS][COLS] = {
-        { 2, 4, 6, 8 },
-        { 3, 5, 7, 9 },
-        { 12, 10, 8, 6}
-    };
+    int total1, total2, total3;
+    int * pt1;
+    int (* pt2)[COLS];
     
-    int morejunk[ROWS - 1][COLS + 2] = {
-        { 20, 30, 40, 50, 60, 70},
-        { 5, 6, 7, 8, 9, 10}
-    };
-    
-    int varr[rs][cs];
-    
-    for (i = 0; i < rs; i++)
-    for (j = 0; j < cs; j++)
-    varr[i][j] = i * j + j;
-    
-    printf("3x4 array\n");
-    printf("Sum of all elements %d\n", sum2d(ROWS, COLS, junk));
-    
-    printf("2x6 array\n");
-    printf("Sum of all elements = %d\n", sum2d(ROWS - 1, COLS + 2, morejunk));
-    
-    printf("3x10 VLA\n");
-    printf("Sum of all elements = %d\n", sum2d(rs, cs, varr));
+    pt1 = (int[2]) { 10, 20 };
+    pt2 = (int[2][COLS]) { {1, 2, 3, -9}, { 4, 5, 6, -8}};
+    //这里的赋值操作其实在是完整的写法,这种完整的写法,明确的告诉了编译器,该数组类型的指针是指向一个最底层有 4 个项切上层有两个这样的数组的多维数组.
+    //与 Swift 的完整写法不同的是,Swift 类型信息是写在变量名称后跟随的 :
+    //在C语言中,要是想定义一个 常量指针,qi
+    total1 = sum(pt1, 2);
+    total2 = sum2d(pt2, 2);
+    total3 = sum((int[]){ 4, 4, 4, 5, 5, 5 }, 6);
+    printf("total1 = %d\n", total1);
+    printf("total2 = %d\n", total2);
+    printf("total3 = %d\n", total3);
     
     return 0;
+}
+
+int sum(const int ar[], int n)
+{
+    int i;
+    int total = 0;
+    
+    for (i = 0; i < n; i++)
+    total += ar[i];
+    
+    return total;
     
 }
 
-int sum2d(int rows, int cols, int ar[rows][cols])
+int sum2d(const int ar [][COLS], int rows)
 {
     int r;
     int c;
-    int tot = 0;
+    int tot;
     
     for (r = 0; r < rows; r++)
-    for (c = 0; c < cols; c++)
+    for (c = 0; c < COLS; c++)
     tot += ar[r][c];
     
     return tot;
 }
-
-
