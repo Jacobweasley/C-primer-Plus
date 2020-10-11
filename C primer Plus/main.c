@@ -1,15 +1,21 @@
 #include <stdio.h>
+
 int main(void)
 {
     int zippo[4][2] = {{2, 4}, {6, 8}, {1, 3}, {5, 7}};
+    int (*pz)[2];//这是一个数组类型的指针,指向一个包含两个项的数组.
+    //为什么样有括号,因为方括号的计算优先级高于 * 号
+    //在声明语句中,声明一个了个项的数组类型指针.在 + 1 以后是跳过 一个 二项数组 的内存距离
+    pz = zippo;
+    //这种赋值指针的赋值语句,实际上就是为指针提供了一个内存地址,这个内存地址是用来提供给该指针用过开头使用的,也就是说,赋值语句给予指针的其实只是一个具体的内存地址,而指针自身的类型,结合该具体的内存地址则划出了一个内存区间,这才是该指针真正指向的.
     
-    printf("   zippo = %p,    zippo + 1 = %p\n", zippo, zippo + 1);
-    printf("zippo[0] = %p, zippo[0] + 1 = %p\n", zippo[0], zippo[0] + 1);
-    printf("zippo[0][0] = %d\n", zippo[0][0]);
-    printf("  *zippo[0] = %d\n", *zippo[0]);
-    printf("    **zippo = %d\n", **zippo);
-    printf("      zippo[2][1] = %d\n", zippo[2][1]);
-    printf("*(*(zippo+2) + 1) = %d\n", *(*(zippo + 2) + 1));
+    printf("    pz = %p,    pz + 1 = %p\n",   pz, pz + 1);
+    printf(" pz[0] = %p, pz[0] + 1 = %p\n", pz[0], pz[0] + 1);
+    printf("  *pz[0][0] = %d\n", pz[0][0]);
+    printf("     *pz[0] = %d\n",  *pz[0]);
+    printf("       **pz = %d\n", **pz);
+    printf("            pz[2][1] = %d\n", pz[2][1]);
+    printf("    *(*(pz + 2) + 1) = %d\n", *(*(pz + 2) + 1));
     
     return 0;
 }
