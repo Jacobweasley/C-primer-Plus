@@ -1,16 +1,23 @@
 #include <stdio.h>
-#define SRTLEN 3
+#define STLEN 14
 int main(void)
 {
-    char words[SRTLEN];
+    char words[STLEN];
     
     puts("Enter a string, please.");
-    gets(words);
-    printf("Your string twice;\n");
-    printf("%s\n", words);
+    fgets(words, STLEN, stdin);
+    printf("Your string twice (puts(), then fputs()):\n");
     puts(words);
+    fputs(words, stdout);
+    puts("Enter another string, please.");
+    fgets(words, STLEN, stdin);
+    printf("Your string twice (puts(), then fputs()):\n");
+    puts(words);
+    fputs(words, stdout);
     puts("Done.");
     
     return 0;
 }
+
+
 
