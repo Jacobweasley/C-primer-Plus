@@ -1,13 +1,17 @@
-
 #include <stdio.h>
-int main(void)
-{
-    char name1[11], name2[11];
-    int count;
+#define DEF "I am a #defined string"
+
+int main(void){
+    char str1 [80] = "An array was intitialized to me.";
+    const char * str2 = "An pointer was initialized to me.";
     
-    printf("Please enter 2 names.\n");
-    count = scanf("%5s %10s", name1, name2);
-    printf("I read the %d names %s and %s.\n", count, name1, name2);
+    puts("I'm an argument to puts().");
+    puts(DEF);
+    puts(str1);
+    puts(str2);
+    puts(&str1[5]);
+    puts(str2 + 4);
     
     return 0;
 }
+
