@@ -1,32 +1,25 @@
 #include <stdio.h>
-#include <string.h>
-#define SIZE 40
-#define LIM 5
-char * s_gets(char * st, int n);
+#define MAX 20
+char * s_gets(char * st, int n );
 
 int main(void)
 {
-    char qwords[LIM][SIZE];
-    char temp[SIZE];
-    int i = 0;
+    char first[MAX];
+    char last[MAX];
+    char formal[2 * MAX + 10];
+    double prize;
     
-    printf("Enter %d words beginning with q:\n", LIM);
-    while (i < LIM && s_gets(temp, SIZE))
-    {
-        if (temp[0] != 'q') {
-            printf("%s doesn't begin with q!\n", temp);
-        }
-        else
-        {
-            strcpy(qwords[i], temp);
-            i++;
-        }
-    }
-    puts("Here are the words accepted:");
-    for (i = 0; i < LIM; i++) {
-        puts(qwords[i]);
-    }
+    puts("Enter you first name:");
+    s_gets(first, MAX);
+    puts("Enter your last name:");
+    s_gets(last, MAX);
+    puts("Enter your prize money:");
+    scanf("%lf", &prize);
+    sprintf(formal, "%s, %-19s: $%6.2f\n", last, first, prize);
+    puts(formal);
+    
     return 0;
+    
 }
 
 char * s_gets(char * st, int n)
@@ -34,18 +27,19 @@ char * s_gets(char * st, int n)
     char * ret_val;
     int i = 0;
     
-    ret_val = fgets(st , n, stdin);
-    if (ret_val){
-        while (st[i] != '\n' && st[i] != '\0') {
+    ret_val = fgets(st, n, stdin);
+    if(ret_val)
+    {
+        while(st[i] != '\n' && st[i] != '\0')
             i++;
-        }
-        if (st[i] == '\n') {
+        if (st[i] == '\n')
             st[i] = '\0';
-        }
         else
             while (getchar() != '\n') {
                 continue;
             }
     }
-    return ret_val;
+    return 0;
 }
+
+
