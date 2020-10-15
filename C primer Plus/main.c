@@ -1,22 +1,22 @@
 #include <stdio.h>
 int main()
 {
-    int x = 30;
-    printf("x in outer block: %d at %p\n", x, &x);
-    {
-        int x = 77;
-        printf("x in inner block: %d at %p\n", x, &x);
+    int n = 8;
+    
+    printf("   Initially, n = %d at %p\n", n, &n);
+    for (int n = 1; n < 3; n++)
+    printf("    loop 1: n = %d at %p\n", n ,&n);
+    printf("After loop 1, n = %d at %p\n", n, &n);
+    for (int n = 1; n < 3; n++) {
+        printf("  loop 2 index n = %d at %p\n", n, &n);
+        int n = 6;
+        printf("   loop 2: n = %d at %p\n", n, &n);
+        n++;
     }
-    printf("x in outer block: %d at %p\n", x, &x);
-    while (x++ < 33) {
-        //这里在 while 语句中的 x++ < 33 语句,所以使用 x 其实该while 外的 等于 30 的x 
-        int x = 100;
-        x++;
-        printf("x in while loop: %d at %p\n", x, &x);
-    }
-    printf("x in outer block: %d at %p\n", x, &x);
+    printf("After loop 2, n = %d at %p\n", n , &n);
     
     return 0;
+    
+    
+    
 }
-
-
