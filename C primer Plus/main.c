@@ -21,3 +21,4 @@ void critic(void)
     scanf("%d", &units);
     
 }
+//
