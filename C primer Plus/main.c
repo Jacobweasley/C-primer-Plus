@@ -1,22 +1,23 @@
 #include <stdio.h>
-int main()
+void trystat(void);
+
+int main(void)
 {
-    int n = 8;
+    int count;
     
-    printf("   Initially, n = %d at %p\n", n, &n);
-    for (int n = 1; n < 3; n++)
-    printf("    loop 1: n = %d at %p\n", n ,&n);
-    printf("After loop 1, n = %d at %p\n", n, &n);
-    for (int n = 1; n < 3; n++) {
-        printf("  loop 2 index n = %d at %p\n", n, &n);
-        int n = 6;
-        printf("   loop 2: n = %d at %p\n", n, &n);
-        n++;
+    for (count = 1; count <= 3; count++)
+    {
+        printf("Here comes iteration %d:\n", count);
+        trystat();
+        
     }
-    printf("After loop 2, n = %d at %p\n", n , &n);
-    
     return 0;
-    
-    
-    
 }
+
+void trystat(void){
+    int fade = 1;
+    static int stay = 1;
+    
+    printf("fade = %d and stay = %d\n", fade++, stay++);
+}
+
