@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A875FEC92539657000AF2E2F /* diceroll.c in Sources */ = {isa = PBXBuildFile; fileRef = A875FEC82539657000AF2E2F /* diceroll.c */; };
 		A8E539CF25247567006C5075 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A8E539CE25247567006C5075 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A875FEC72539657000AF2E2F /* diceroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = diceroll.h; sourceTree = "<group>"; };
+		A875FEC82539657000AF2E2F /* diceroll.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = diceroll.c; sourceTree = "<group>"; };
 		A8E539CB25247567006C5075 /* C primer Plus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "C primer Plus"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E539CE25247567006C5075 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				A8E539CE25247567006C5075 /* main.c */,
+				A875FEC72539657000AF2E2F /* diceroll.h */,
+				A875FEC82539657000AF2E2F /* diceroll.c */,
 			);
 			path = "C primer Plus";
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8E539CF25247567006C5075 /* main.c in Sources */,
+				A875FEC92539657000AF2E2F /* diceroll.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
