@@ -1,64 +1,216 @@
-//
-//  main.c
-//  C primer Plus
-//
-//  Created by 大娘 on 2020/10/20.
-//
-
 #include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
-char * s_gets(char * st, int n);
-#define MAXTITL 41
-#define MAXAUTL 31
+#include <stdlib.h>
+#define LEN 10
+#define TOTLE 12
 
-struct book {
-    char title[MAXTITL];
-    char author[MAXAUTL];
-    float value;
+struct seats {
+    unsigned int seatnumber;
+    bool book;
+    char firstname[LEN];
+    char lastname[LEN];
 };
 
+struct seats plane[TOTLE];
+void emptytheplane(int);
+void showseats(void);
+char showmanule(void);
+char * s_gets(char * st, int n);
+void showemptyseat(void);
+void showinformationofemptyseat(void);
+void showinformationofunemptyseat(void);
+void bookingseat(void);
+void unbookingseat(void);
+void exitprogarm(void);
+void show(void(*fp)(char *), char * str);
 
 int main(void)
 {
-    struct book library;
+    char anser;
+    void(*pfun)(void) = NULL;
+    emptytheplane(0);
+    showseats();
+    do {
+        anser = showmanule();
+        switch (anser) {
+                case 'a': pfun = showemptyseat;  break;
+                case 'b': pfun = showinformationofemptyseat; break;
+                case 'c': pfun = showinformationofunemptyseat; break;
+                case 'd': pfun = bookingseat; break;
+                case 'e': pfun = unbookingseat; break;
+                case 'i': pfun = showseats; break;
+                case 'f': break;
+        }
+        pfun();
+    } while (anser != 'f');
+    puts("Bye!");
     
-    printf("Please enter the book title.\n");
-    s_gets(library.title, MAXTITL);
-    printf("Now anter the author.\n");
-    s_gets(library.author, MAXAUTL);
-    printf("Now enter the value.\n");
-    scanf("%f", &library.value);
-    printf("%s: \"%s\" ($%.2f)\n", library.author, library.title, library.value);
-    printf("Done.\n");
     
     return 0;
-    
+}
+
+void unbookingseat(void)
+{
+    unsigned int seatnumber;
+    printf("Please inset the seat number that you want to unbook.\n");
+    if (!(seatnumber = getchar())) {
+        printf("The number you inster is out of ranl.\n");
+        printf("Please inster again.\n");
+        seatnumber = getchar();
+        while (getchar() != '\n')
+            continue;
+    }
+    while (getchar() != '\n') {
+        continue;
+    }
+  
+    emptytheplane(seatnumber);
     
 }
 
+void bookingseat(void)
+{
+    char input[LEN];
+    unsigned int seatnumber;
+    printf("Please inset the seat number that you want to book.\n");
+   while (!(seatnumber = getchar())) {
+        printf("The number you inster is out of ranl.\n");
+        printf("Please inster again.\n");
+        while (getchar() != '\n')
+            continue;
+    }
+    while (seatnumber < 1 || seatnumber >12 || (plane[seatnumber-1].book))
+    {
+        printf("The number you inster is out of ranl.\n");
+        printf("Please inster again.\n");
+        scanf("%u", &seatnumber);
+        while (getchar() != '\n')
+            continue;
+    }
+    printf("Please inset your firstname:\n");
+    s_gets(input, LEN);
+    strcpy(plane[seatnumber - 1].firstname, input);
 
-char * s_gets(char * st, int n )
+    printf("Please inset you lastname:\n");
+    s_gets(input, LEN);
+    strcpy(plane[seatnumber - 1].lastname, input);
+    
+    plane[seatnumber - 1].book = true;
+    
+}
+
+void showinformationofunemptyseat(void)
+{
+    printf("There is the information of unempty seat.\n");
+    printf("seatnumber,   bookable,    firstname,     lastname\n");
+    for (int n = 0; n < TOTLE; n++)
+    {
+        if (plane[n].book == true) {
+            printf("%2u, %d, %s, %s\n", plane[n].seatnumber, plane[n].book, plane[n].firstname, plane[n].lastname);
+        }
+    }
+}
+
+
+void showinformationofemptyseat(void)
+{
+    printf("There is the information of empty seat.\n");
+    printf("seatnumber,   bookable,    firstname,     lastname\n");
+    for (int n = 0; n < TOTLE; n++)
+    {
+        if (plane[n].book == false) {
+            printf("%2u, %d, %s, %s\n", plane[n].seatnumber, plane[n].book, plane[n].firstname, plane[n].lastname);
+        }
+    }
+}
+
+void showemptyseat(void)
+{
+    printf("\n");
+    printf("There is the empty seat number\n");
+    for (int n = 0; n < TOTLE; n++)
+    {
+        if (plane[n].book == false)
+        {
+            printf("seat: %u\n", plane[n].seatnumber);
+        }
+        else
+        {
+            continue;
+        }
+    }
+}
+
+char * s_gets(char * st, int n)
 {
     char * ret_val;
-    char * find;
+    char i = 0;
     
     ret_val = fgets(st, n, stdin);
-    if(ret_val)
+    if (ret_val)
     {
-        find = strchr(st, '\n');
-        if (find)
-        {
-            *find = '\0';
-        }
+        while (st[i] != '\n' && st[i] != '\0')
+            i++;
+        if (st[i] == '\n')
+            st[i] = '\0';
         else
             while (getchar() != '\n')
                 continue;
     }
+    
     return ret_val;
 }
 
-//使用结构体定义的 变量的在内存中分配的空间是连续的，这种连续的代码有点像是 数组但是与数组不同的是， 在struct 中定义的数据的自由度是相对较高的 而数组中数据的类型在 该数组定义的时候就已经确定了，而在 struct 中 可以在定义的时候自己选择在该struct中 的数据类型， 以及数据的个数。
-//在 C语言中的 struct 的结构体的也算是有实例化的， 是不过 他的实例化的语法与 swift 语言有些不一样。
 
-// 在 C语言中 要想要将一个 struct 实例化的话就，同样需要使用 struct 在需要实例化的地方将需要的是实例化的名称写在对应的地方， 这样以后该 结构体的一个实例就是存在于该函数当中。
+char showmanule(void)
+{
+    printf("\n");
+    puts("To choose a function, enter its letter label:");
+    puts("a) Show number of empty seats");
+    puts("b) Show list of empty seats");
+    puts("c) Show alphabetical list of seats");
+    puts("d) Assign a customer to a seat assignment");
+    puts("e) Delete a seat assignment");
+    puts("f) Quit");
+    char ans;
+    putc('\n', stdout);
+    puts("Now inter you option.");
+    ans = getchar();
+    while (getchar() != '\n') {
+        continue;
+    }
+    
+    return ans;
+    
+}
 
+void showseats(void)
+{
+    printf("seatnumber,   bookable,    firstname,     lastname\n");
+    for(int n = 0; n < TOTLE; n++)
+    {
+        printf("%2u, %d, %s, %s\n", plane[n].seatnumber, plane[n].book, plane[n].firstname, plane[n].lastname);
+    }
+    
+}
+
+
+void emptytheplane(int type)
+{
+    struct seats emptyseat = (struct seats){
+        0, false, "unknow", "unknow"
+    };
+    if (type == 0)
+    {
+        for (int n = 0; n < TOTLE; n++)
+        {
+            plane[n] = emptyseat;
+            plane[n].seatnumber = n + 1;
+        }
+    } else
+    {
+        plane[type - 1] = emptyseat;
+        plane[type - 1].seatnumber = type;
+    }
+}
